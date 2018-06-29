@@ -10,7 +10,13 @@ const carsRouter = require('./cars/carsRouter')
 
 const app = express()
 app.use(bodyParser.json())
-app.use(cors())
+
+const corsOptions = {
+    exposedHeaders: "Authorization",
+    // withCredentials: true
+}
+app.use(cors(corsOptions))
+
 
 app.use('/auth', authRouter)
 app.use('/cars', carsRouter)

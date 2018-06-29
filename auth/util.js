@@ -1,7 +1,7 @@
 isAuthenticUser = (email, password) => {
     const user = {
-        email: "example@example.com",
-        password: "123"
+        email: "test1@mail.com",
+        password: "password123"
     }
 
     if(email === user.email && password === user.password){

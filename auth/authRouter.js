@@ -13,7 +13,7 @@ router.post('/login', authenticate, (req, res) => {
 
     const jwtSecret = process.env.JWT_SECRET
 
-    JWT.sign(payload, jwtSecret, (err, token) => {
+    const header = JWT.sign(payload, jwtSecret, (err, token) => {
         if(err) {
             res.status(401)
             throw new Error('Bad token')
@@ -23,8 +23,12 @@ router.post('/login', authenticate, (req, res) => {
 
         res.set('Connection', `IP ${ipAddress}`)
         res.set('Authorization', `Bearer ${token}`)
+        // res.send.json(token)
         res.status(200).end()
     })
+    
+    
+    return header;
 })
 
 module.exports = router
